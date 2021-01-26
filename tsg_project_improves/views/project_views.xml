@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="edit_project_tsg_inherit" model="ir.ui.view">
+        <field name="name">edit.project.tsg.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='settings']" position="after">
+                <page name="notes" string="Notes">
+                    <group string="Notes">
+                        <field name="notes"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='settings']" position="before">
+                <page name="basic_information" string="Basic Information">
+                    <group string="Basic Information" colspan="4">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="coverage" widget="radio"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description"/>
+                    </group>
+                </page>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>
