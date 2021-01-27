@@ -9,6 +9,6 @@ class Project(models.Model):
 
     date_start = fields.Datetime(string='Date Start')
     date_end = fields.Datetime(string='Date End')
-    coverage = fields.Selection(selection=[('national', 'National'), ('international', 'Internationa'), ('local', 'Local')], string='Coverage')
+    coverage = fields.Selection(selection=[('national', 'National'), ('international', 'International'), ('local', 'Local')], string='Coverage')
     notes = fields.Text(string='Notes')
     description = fields.Text(string='Description')

@@ -12,9 +12,9 @@
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="required">True</attribute>
             </xpath>
-            <xpath expr="//field[@name='partner_id']" position="attributes">
+            <xpath expr="//field[@name='owner_id']" position="attributes">
                 <attribute name="required">True</attribute>
-                <attribute name="domain">[('partner_id', '=', partner_id)]</attribute>
+                <attribute name="domain">['|', ('id', '=', partner_id), ('parent_id', '=', partner_id)]</attribute>
                 <attribute name="attrs">{'invisible':False}</attribute>
             </xpath>
         </field>
