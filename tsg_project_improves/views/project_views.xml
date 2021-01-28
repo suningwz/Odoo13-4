@@ -6,6 +6,16 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
+
+            <xpath expr="//notebook/page[@name='settings']/group/group" position="replace"/>
+            <xpath expr="//div[@name='options_active']" position="after">
+                <group name="user_partner_fields">
+                    <field name="active" invisible="1"/>
+                    <field name="user_id" string="Project Manager" attrs="{'readonly':[('active','=',False)]}"/>
+                    <field name="partner_id" string="Customer"/>
+                </group>
+            </xpath>
+
             <xpath expr="//notebook/page[@name='settings']" position="after">
                 <page name="notes" string="Notes">
                     <group string="Notes">
@@ -15,10 +25,14 @@
             </xpath>
             <xpath expr="//notebook/page[@name='settings']" position="before">
                 <page name="basic_information" string="Basic Information">
-                    <group string="Basic Information" colspan="4">
-                        <field name="date_start"/>
-                        <field name="date_end"/>
-                        <field name="coverage" widget="radio"/>
+                    <group string="Basic Information">
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                        <group>
+                            <field name="coverage" widget="radio"/>
+                        </group>
                     </group>
                     <group string="Description">
                         <field name="description"/>
