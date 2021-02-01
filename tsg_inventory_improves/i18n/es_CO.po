@@ -59,6 +59,10 @@ msgstr "Prioridad:"
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Product"
 msgstr "Producto"
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__attachment_ids
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
+msgid "Attachments"
+msgstr "Archivos Adjuntos"
 
 #. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__project_id
@@ -75,10 +79,14 @@ msgstr "Proyecto"
 msgid "Quantity"
 msgstr "Cantidad"
 
-#. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_stock_quant
 msgid "Quants"
-msgstr "Cants"
+msgstr "Cantidades"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
+msgid "Select Files"
+msgstr "Seleccionar Archivos"
 
 #. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_stock_move

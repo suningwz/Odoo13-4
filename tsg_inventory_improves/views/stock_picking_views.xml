@@ -14,8 +14,13 @@
             </xpath>
             <xpath expr="//field[@name='owner_id']" position="attributes">
                 <attribute name="required">True</attribute>
-                <attribute name="domain">['|', ('id', '=', partner_id), ('parent_id', '=', partner_id)]</attribute>
+                <attribute name="domain">['|', '|', ('id', '=', partner_id), ('parent_id', '=', partner_id), ('name', 'ilike', 'TSG')]</attribute>
                 <attribute name="attrs">{'invisible':False}</attribute>
+            </xpath>
+            <xpath expr="//page[@name='note']" position="after">
+                <page string="Attachments" name="attachments">
+                    <field name="attachment_ids"  widget="many2many_binary" colspan="2" string="Select Files" nolabel="1"/>
+                </page>
             </xpath>
         </field>
     </record>
