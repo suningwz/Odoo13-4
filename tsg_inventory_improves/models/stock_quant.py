@@ -64,4 +64,4 @@ class StockQuant(models.Model):
                 'owner_id': owner_id and owner_id.id,
                 'in_date': in_date,
             })
-        return self._get_available_quantity(product_id, location_id, lot_id=lot_id, package_id=package_id, owner_id=owner_id, strict=False, allow_negative=True), fields.Datetime.from_string(in_date)
+        return self._get_available_quantity(product_id, location_id, lot_id=lot_id, package_id=package_id, owner_id=owner_id, strict=False, allow_negative=False), fields.Datetime.from_string(in_date)

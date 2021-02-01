@@ -7,7 +7,7 @@ from operator import itemgetter
 
 class StockMove(models.Model):
     _name = "stock.move"
-    _inherti = "stock.move"
+    _inherit = "stock.move"
 
     def _action_assign(self):
         """ Reserve stock moves by creating their stock move lines. A stock move is
