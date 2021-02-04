@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 14:21+0000\n"
-"PO-Revision-Date: 2021-02-04 14:21+0000\n"
+"POT-Creation-Date: 2021-02-04 16:15+0000\n"
+"PO-Revision-Date: 2021-02-04 16:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,72 @@ msgstr ""
 "Ordenes de compra Creadas y Confirmadas por el sistema de Compras Inteligentes"
 
 #. module: tsg_purchase_improves
+#: model:ir.actions.report,print_report_name:tsg_purchase_improves.action_report_purchase_order
+msgid ""
+"                   (object.state in ('draft', 'sent') and 'Request for "
+"Quotation - %s' % (object.name) or                   'Purchase Order - %s' %"
+" (object.name))"
+msgstr ""
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "&amp;bull;"
+msgstr ""
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">Subtotal</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Valor</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Date Req.</strong>"
+msgstr "<strong>Fecha de Solicitud</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Cant.</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotal</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>Impuestos</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Precio Unitario</strong>"
+
+#. module: tsg_purchase_improves
 #: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.view_partner_form_tsg_inherit_2
 msgid "Basic Information"
 msgstr "Información Básica"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Company:"
+msgstr "Compañía:"
 
 #. module: tsg_purchase_improves
 #: model:ir.model,name:tsg_purchase_improves.model_res_partner
@@ -52,6 +115,11 @@ msgid "Inventory"
 msgstr "Inventario"
 
 #. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.stock_report_header
+msgid "Logo"
+msgstr "Logo"
+
+#. module: tsg_purchase_improves
 #: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.view_partner_form_tsg_inherit_2
 msgid "Misc."
 msgstr "Misc."
@@ -60,6 +128,21 @@ msgstr "Misc."
 #: model:ir.model.fields,field_description:tsg_purchase_improves.field_product_supplierinfo__name
 msgid "Name of Price"
 msgstr "Nombre del Precio"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Order date:"
+msgstr "Fecha de Orden:"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Partner reff:"
+msgstr "Ref. Cliente"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Partner:"
+msgstr "Cliente:"
 
 #. module: tsg_purchase_improves
 #: code:addons/tsg_purchase_improves/models/purchase_order.py:0
@@ -79,6 +162,7 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: tsg_purchase_improves
+#: model:ir.actions.report,name:tsg_purchase_improves.action_report_purchase_order
 #: model:ir.model,name:tsg_purchase_improves.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de compra"
@@ -87,6 +171,16 @@ msgstr "Pedido de compra"
 #: model:ir.model,name:tsg_purchase_improves.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "Línea de pedido de compra"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.stock_report_header
+msgid "Purchase Order Report"
+msgstr "Reporte de Orden de Compra"
+
+#. module: tsg_purchase_improves
+#: model:ir.actions.report,name:tsg_purchase_improves.purchase_order_report
+msgid "Purchase report"
+msgstr "Reporte de Compra"
 
 #. module: tsg_purchase_improves
 #: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.view_partner_form_tsg_inherit_2
@@ -104,9 +198,19 @@ msgid "Sales"
 msgstr "Ventas"
 
 #. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Solicitud de Cotización"
+msgstr "Solicitud de Cotización"
+
+#. module: tsg_purchase_improves
 #: model:ir.model,name:tsg_purchase_improves.model_product_supplierinfo
 msgid "Supplier Pricelist"
 msgstr "LdP Proveedor"
+
+#. module: tsg_purchase_improves
+#: model_terms:ir.ui.view,arch_db:tsg_purchase_improves.purchase_order_report_template
+msgid "Taxes"
+msgstr "Impuestos"
 
 #. module: tsg_purchase_improves
 #: model:ir.model.fields,field_description:tsg_purchase_improves.field_product_supplierinfo__partner_id

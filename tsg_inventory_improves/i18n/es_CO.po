@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 14:04+0000\n"
-"PO-Revision-Date: 2021-02-04 14:04+0000\n"
+"POT-Creation-Date: 2021-02-04 16:11+0000\n"
+"PO-Revision-Date: 2021-02-04 16:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,22 @@ msgstr "Dirección:"
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
 msgid "Attachments"
 msgstr "Archivos Adjuntos"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__devolution_origin_id
+msgid "Devolution Origin"
+msgstr "Origen de Devolución"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__devolution_related_ids
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
+msgid "Devolutions"
+msgstr "Devoluciones"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__is_devolution
+msgid "Is Devolution?"
+msgstr "¿Es una devolución?"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_report_header
@@ -55,6 +71,12 @@ msgstr "Cliente:"
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Phone:"
 msgstr "Teléfono:"
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/wizard/stock_picking_return.py:0
+#, python-format
+msgid "Please specify at least one non-zero quantity."
+msgstr "Especifique por favor al menos una cantidad no nula."
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
@@ -84,7 +106,18 @@ msgstr "Cantidad"
 #. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_stock_quant
 msgid "Quants"
-msgstr "Cantidades"
+msgstr "Cantidadess"
+
+#. module: tsg_inventory_improves
+#: model:ir.model,name:tsg_inventory_improves.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Albarán de devolución"
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/wizard/stock_picking_return.py:0
+#, python-format
+msgid "Return of %s"
+msgstr "Retorno de %s"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
@@ -106,3 +139,10 @@ msgstr "Reporte de Albarán"
 #: model:ir.model,name:tsg_inventory_improves.model_stock_picking
 msgid "Transfer"
 msgstr "Transferir"
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/wizard/stock_picking_return.py:0
+#, python-format
+msgid ""
+"You have manually created product lines, please delete them to proceed."
+msgstr "Ha creado líneas de productos manualmente, elimínelas para continuar."

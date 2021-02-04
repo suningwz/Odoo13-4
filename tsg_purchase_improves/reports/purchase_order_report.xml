@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
      <data>
-          <report id="purchase_order_report" model="purchase.order" string="Purchase report" report_type="qweb-pdf" name="tsg_inventory_improves.purchase_order_report_template" file="tsg_inventory_improves.purchase_order_report_template"/>
+          <report id="purchase_order_report" model="purchase.order" string="Purchase report" report_type="qweb-pdf" name="tsg_purchase_improves.purchase_order_report_template" file="tsg_purchase_improves.purchase_order_report_template"/>
           <template id="stock_report_header" inherit_id="web.internal_layout">
                <xpath expr="//div[@class='header']" position = "replace">
                     <div class="header">
@@ -45,7 +45,6 @@
                                    <div class="row">
                                         <div class="col-7">
                                              <p style= "font-size: 30px">
-                                                  Solicitud de Cotización 
                                                   <span style= "font-size: 30px" t-field = "o.name"/>
                                              </p>
                                              <p>

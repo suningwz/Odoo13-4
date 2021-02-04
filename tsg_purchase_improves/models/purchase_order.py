@@ -135,7 +135,7 @@ class PurchaseOrder(models.Model):
 
     def button_confirm(self):
         new_orders_ids = self.intelligent_purchases()
-        if new_orders_ids and self.id in new_orders_ids:
+        if (new_orders_ids and self.id in new_orders_ids) or self.id:
             result = super(PurchaseOrder, self).button_confirm()
         else:
             result = True
