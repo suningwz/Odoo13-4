@@ -25,6 +25,7 @@
     'data': [
         'views/res_partner_views.xml',
         'views/product_supplierinfo_views.xml',
+        'reports/purchase_order_report.xml',
     ],
     'installable': True,
     'auto_install': False,
