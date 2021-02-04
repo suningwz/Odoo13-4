@@ -61,7 +61,12 @@ class StockMove(models.Model):
                     ### ONLY SAME OWNER QUANTITIES ###
 
                     if move.picking_id:
-                        if move.picking_id.partner_id.parent_id:
+                        if move.picking_id.partner_id != move.picking_id.owner_id:
+                            if move.picking_id.owner_id.parent_id:
+                                available_quantity = self.env['stock.quant']._get_available_quantity(move.product_id, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.owner_id.parent_id)
+                            else:
+                                available_quantity = self.env['stock.quant']._get_available_quantity(move.product_id, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.owner_id)
+                        elif move.picking_id.partner_id.parent_id:
                             available_quantity = self.env['stock.quant']._get_available_quantity(move.product_id, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.partner_id.parent_id)
                         else:
                             available_quantity = self.env['stock.quant']._get_available_quantity(move.product_id, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.partner_id)
@@ -75,7 +80,12 @@ class StockMove(models.Model):
 
                     ### ONLY SAME OWNER QUANTITIES ###
                     if move.picking_id:
-                        if move.picking_id.partner_id.parent_id:
+                        if move.picking_id.partner_id != move.picking_id.owner_id:
+                            if move.picking_id.owner_id.parent_id:
+                                taken_quantity = move._update_reserved_quantity(need, available_quantity, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.owner_id.parent_id, strict=False)
+                            else:
+                                taken_quantity = move._update_reserved_quantity(need, available_quantity, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.owner_id, strict=False)
+                        elif move.picking_id.partner_id.parent_id:
                             taken_quantity = move._update_reserved_quantity(need, available_quantity, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.partner_id.parent_id, strict=False)
                         else:
                             taken_quantity = move._update_reserved_quantity(need, available_quantity, move.location_id, package_id=forced_package_id, owner_id=move.picking_id.partner_id, strict=False)

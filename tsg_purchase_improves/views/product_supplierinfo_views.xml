@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_supplierinfo_form_view_tsg_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.form.view.tsg.inherit</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name"/>
+                <field name="partner_id" context="{'res_partner_search_mode': 'supplier'}"/>
+            </xpath>
+            <xpath expr="//field[@name='product_tmpl_id']" position="attributes">
+                <attribute name="invisible">False</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_supplierinfo_search_view_tsg_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.search.view.tsg.inherit</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name"/>
+                <field name="partner_id"/>
+            </xpath>
+            <xpath expr="//filter[@name='groupby_vendor']" position="replace">
+                <filter string="Vendor" name="groupby_vendor" domain="[]" context="{'group_by': 'partner_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_supplierinfo_view_kanban_tsg_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.view.kanban.tsg.inherit</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name"/>
+                <field name="partner_id"/>
+            </xpath>
+            <xpath expr="//span[@t-esc='record.name.value']" position="replace">
+                <span t-esc="record.partner_id.name"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_supplierinfo_tree_view_tsg_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.tree.view.tsg.inherit</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name" readonly="1"/>
+                <field name="partner_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
