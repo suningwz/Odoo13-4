@@ -16,6 +16,7 @@
     'depends' : ['stock'],
     'data': [
         'views/stock_picking_views.xml',
+        'reports/stock_picking_report.xml',
     ],
     'installable': True,
     'auto_install': False,
