@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="view_picking_form_tsg_inherit" model="ir.ui.view">
         <field name="name">view.picking.form.tsg.inherit</field>
         <field name="model">stock.picking</field>
@@ -22,7 +21,23 @@
                     <field name="attachment_ids"  widget="many2many_binary" colspan="2" string="Select Files" nolabel="1"/>
                 </page>
             </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="is_devolution" attrs= "{'invisible': [('is_devolution', '!=', True)]}"/>
+                <field name= "devolution_origin_id" attrs= "{'invisible': [('is_devolution', '!=', True)]}"/>
+            </xpath>
+            <xpath expr="//page[@name='note']" position="after">
+                <page string="Devolutions" name="devolutions" attrs= "{'invisible': [('is_devolution', '!=', False)]}">
+                   <field name="devolution_related_ids" nolabel="1"  readonly="True"/>
+                    <!-- <field name="devolution_related_ids" nolabel="1">
+                        <tree create= "false" edit= "false">
+                           <field name="name"/>
+                           <field name="partner_id"/>
+                           <field name="scheduled_date"/>
+                           <field name="location_dest_id"/>
+                        </tree>
+                    </field> -->
+                </page>
+            </xpath>
         </field>
     </record>
-
 </odoo>

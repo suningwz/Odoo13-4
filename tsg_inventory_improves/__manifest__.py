@@ -17,6 +17,7 @@
     'data': [
         'views/stock_picking_views.xml',
         'reports/stock_picking_report.xml',
+        'reports/purchase_order_report.xml',
     ],
     'installable': True,
     'auto_install': False,
