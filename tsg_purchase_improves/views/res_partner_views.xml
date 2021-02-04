@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_tsg_inherit_2" model="ir.ui.view">
+        <field name="name">view.partner.form.tsg.inherit.2</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="sales" string="Sales">
+                    <group name="sales" string="Sales">
+                        <group>
+                            <field name="user_id"/>
+                            <field name="team_id"/>
+                        </group>
+                        <group>
+                            <field name="property_payment_term_id"/>
+                            <field name="property_product_pricelist"/>
+                        </group>
+                    </group>
+                    <group name="inventory" string="Inventory">
+                        <group>
+                            <field name="property_stock_customer"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="purchases" string="Purchases">
+                    <group>
+                        <group name="purchases" string="Purchases">
+                            <field name="property_supplier_payment_term_id"/>
+                        </group>
+                        <group name="inventory" string="Inventory">
+                            <field name="property_stock_supplier"/>
+                        </group>
+                    </group>
+                    <group name="purchases_price_list" string="Purchases Price List">
+                        <field name="product_supplier_info_ids" nolabel="1">
+                            <tree name="product_supplier_info_in_partner">
+                                <field name="product_tmpl_id"/>
+                                <field name="min_qty"/>
+                                <field name="product_uom"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+            
+            <xpath expr="//notebook/page[1]" position="before">
+                <page name="basic_information" string="Basic Information">
+                    <group name="fiscal_information" string="Fiscal Information">
+                        <field name="property_account_position_id"/>
+                    </group>
+                    <group name="miscellaneous" string="Misc.">
+                        <field name="ref"/>
+                        <field name="website"/>
+                        <field name="industry_id"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//page[@name='sales_purchases']" position="replace"/>
+
+        </field>
+    </record>
+
+</odoo>
