@@ -101,16 +101,14 @@
                 </t>
                 <t t-if="not o.move_line_ids_without_package">
                   <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
-                    <t t-foreach = "move_line.move_line_nosuggest_ids" t-as= "move_lot">
-                      <tr>
-                        <td>
-                          <span style= "font-size: 10px" t-field = "move_line.product_id" />
-                        </td>
-                        <td>
-                          <span style= "font-size: 10px" t-field = "move_lot.qty_done"/>
-                        </td>
-                      </tr>
-                    </t>
+                    <tr>
+                      <td>
+                        <span style= "font-size: 10px" t-field = "move_line.product_id" />
+                      </td>
+                      <td>
+                        <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
+                      </td>
+                    </tr>
                   </t>  
                 </t>
               </tbody>
