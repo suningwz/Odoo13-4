@@ -9,5 +9,5 @@
                 <field name="intelligent_purchase"/>
             </xpath>
         </field>
-    <record>
+    </record>
 </odoo>
