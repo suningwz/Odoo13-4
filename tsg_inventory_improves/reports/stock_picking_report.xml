@@ -2,9 +2,9 @@
 <odoo>
   <data>
     <report id="stock_picking_report" model="stock.picking" string="Stock Report" report_type="qweb-pdf" name="tsg_inventory_improves.stock_picking_report_template" file="tsg_inventory_improves.stock_picking_report_template" />
-    <template id="stock_report_header" inherit_id="web.internal_layout">
+    <!-- <template id="stock_report_header" inherit_id="web.internal_layout">
       <xpath expr="//div[@class='header']" position = "replace"/>
-    </template>
+    </template> -->
     <template id="stock_picking_report_template">
       <t t-call = "web.html_container">
         <t t-call = "web.internal_layout">
