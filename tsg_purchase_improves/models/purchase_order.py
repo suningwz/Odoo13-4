@@ -11,7 +11,9 @@ from datetime import datetime, date
 class PurchaseOrder(models.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
-
+    
+    intelligent_purchase = fields.Boolean(string="Intelligent Purchase")
+    
     def _add_supplier_to_product(self):
         # Add the partner in the supplier list of the product if the supplier is not registered for
         # this product. We limit to 10 the number of suppliers for a product to avoid the mess that
@@ -134,22 +136,25 @@ class PurchaseOrder(models.Model):
             return new_orders_ids or False
 
     def button_confirm(self):
-        new_orders_ids = self.intelligent_purchases()
-        if (new_orders_ids and self.id in new_orders_ids) or self.id:
-            result = super(PurchaseOrder, self).button_confirm()
+        if self.id and self.intelligent_purchase:
+            new_orders_ids = self.intelligent_purchases()
+            if (new_orders_ids and self.id in new_orders_ids) or self.id:
+                result = super(PurchaseOrder, self).button_confirm()
+            else:
+                result = True
+            if new_orders_ids:
+                tree_view_id = self.env.ref('purchase.purchase_order_tree').ids
+                form_view_id = self.env.ref('purchase.purchase_order_form').ids
+                return {
+                    'name': _('Intelligent Purchase'),
+                    'type': 'ir.actions.act_window',
+                    'res_model': 'purchase.order',
+                    'views': [[tree_view_id, 'tree'],[form_view_id, 'form']],
+                    'domain': '[("id", "in",' + str(new_orders_ids) + ')]',
+                    'view_mode': 'tree',
+                    'target': 'current',
+                }
+            else:
+                return result
         else:
-            result = True
-        if new_orders_ids:
-            tree_view_id = self.env.ref('purchase.purchase_order_tree').ids
-            form_view_id = self.env.ref('purchase.purchase_order_form').ids
-            return {
-                'name': _('Intelligent Purchase'),
-                'type': 'ir.actions.act_window',
-                'res_model': 'purchase.order',
-                'views': [[tree_view_id, 'tree'],[form_view_id, 'form']],
-                'domain': '[("id", "in",' + str(new_orders_ids) + ')]',
-                'view_mode': 'tree',
-                'target': 'current',
-            }
-        else:
-            return result
+            return super(PurchaseOrder, self).button_confirm()
