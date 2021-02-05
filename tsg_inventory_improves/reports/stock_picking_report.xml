@@ -10,7 +10,7 @@
         <t t-call = "web.internal_layout">
           <t t-foreach="docs" t-as="o">
             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"/>
-            
+            <t t-set="company" t-value="o.env.company"/>
             <div class="header">
               <table style = "width: 100%; height:100px; border: black 1px solid">
                 <tr>
