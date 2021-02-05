@@ -20,9 +20,11 @@
     'depends' : [
         'base', 
         'product',
-        'account'
+        'account',
+        'purchase',
     ],
     'data': [
+        'views/purchase_order_view.xml',
         'views/res_partner_views.xml',
         'views/product_supplierinfo_views.xml',
         'reports/purchase_order_report.xml',
