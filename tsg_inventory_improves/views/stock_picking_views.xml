@@ -5,8 +5,15 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//page[2]" position="attributes">
+                <attribute name="string">Available</attribute>
+            </xpath>
+            <xpath expr="//page[3]" position="attributes">
+                <attribute name="string">Requested</attribute>
+            </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="project_id" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="partner_parent_id" invisible="1"/>
+                <field name="project_id" domain="['|', ('partner_id', '=', partner_id),('partner_id', '=', partner_parent_id),('partner_id','!=',False)]"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="required">True</attribute>
@@ -28,14 +35,6 @@
             <xpath expr="//page[@name='note']" position="after">
                 <page string="Devolutions" name="devolutions" attrs= "{'invisible': [('is_devolution', '!=', False)]}">
                    <field name="devolution_related_ids" nolabel="1"  readonly="True"/>
-                    <!-- <field name="devolution_related_ids" nolabel="1">
-                        <tree create= "false" edit= "false">
-                           <field name="name"/>
-                           <field name="partner_id"/>
-                           <field name="scheduled_date"/>
-                           <field name="location_dest_id"/>
-                        </tree>
-                    </field> -->
                 </page>
             </xpath>
         </field>

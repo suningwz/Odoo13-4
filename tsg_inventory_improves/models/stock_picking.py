@@ -5,6 +5,7 @@ class Picking(models.Model):
     _name = "stock.picking"
     _inherit = "stock.picking"
 
+    partner_parent_id = fields.Many2one(comodel_name='res.partner', related='partner_id.parent_id', string='Owner')
     project_id = fields.Many2one(comodel_name='project.project', string="Project")
     attachment_ids = fields.Many2many(comodel_name='ir.attachment', 
     relation='atthacments_for_pickings',column1='picking_id', column2='att_id',string='Attachments')

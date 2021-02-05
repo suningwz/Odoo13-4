@@ -3,44 +3,44 @@
   <data>
     <report id="stock_picking_report" model="stock.picking" string="Stock Report" report_type="qweb-pdf" name="tsg_inventory_improves.stock_picking_report_template" file="tsg_inventory_improves.stock_picking_report_template" />
     <template id="stock_report_header" inherit_id="web.internal_layout">
-      <xpath expr="//div[@class='header']" position = "replace">
-        <div class="header">
-          <table style = "width: 100%; height:100px; border: black 1px solid">
-            <tr>
-              <td style= "padding-left: 20px; padding-top: 10px; padding-bottom: 10px">
-                <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
-              </td>
-              <td>
-                <h5 style = "font-size: 30px; align: center">Stock Report</h5>
-              </td>
-              <td>
-                <ul style = "align:center" class="list-inline">
-                  <p>
-                    <li class="list-inline-item">
-                      <span class="page"/>
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      <span class="topage"/>
-                    </li>
-                  </p>
-                  <p>
-                    <li class= "list-inline-item">
-                      <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
-                    </li>
-                  </p>
-                </ul>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </xpath>
+      <xpath expr="//div[@class='header']" position = "replace"/>
     </template>
     <template id="stock_picking_report_template">
       <t t-call = "web.html_container">
         <t t-call = "web.internal_layout">
           <t t-foreach="docs" t-as="o">
             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"/>
+            
+            <div class="header">
+              <table style = "width: 100%; height:100px; border: black 1px solid">
+                <tr>
+                  <td style= "padding-left: 20px; padding-top: 10px; padding-bottom: 10px">
+                    <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
+                  </td>
+                  <td>
+                    <h5 style = "font-size: 30px; align: center">Stock Report</h5>
+                  </td>
+                  <td>
+                    <ul style = "align:center" class="list-inline">
+                      <p>
+                        <li class="list-inline-item">
+                          <span class="page"/>
+                        </li>
+                        <li class="list-inline-item">/</li>
+                        <li class="list-inline-item">
+                          <span class="topage"/>
+                        </li>
+                      </p>
+                      <p>
+                        <li class= "list-inline-item">
+                          <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                        </li>
+                      </p>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
             <div style= "padding-bottom: 30px" class="container-fluid">
               <div class="row">
                 <div class="col-7">
@@ -86,11 +86,11 @@
                 </tr>
               </thead>
               <tbody>
-                <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
-                  <t t-foreach = "move_line.move_line_nosuggest_ids" t-as= "move_lot">
+                <t t-if="o.move_line_ids_without_package">
+                  <t t-foreach = "o.move_line_ids_without_package" t-as= "move_lot">
                     <tr>
                       <td>
-                        <span t-field = "move_line.product_id" />
+                        <span t-field = "move_lot.product_id" />
                       </td>
                       <td>
                         <span t-field = "move_lot.lot_id"/>
@@ -99,7 +99,24 @@
                         <span t-field = "move_lot.qty_done"/>
                       </td>
                     </tr>
-                  </t>
+                  </t>  
+                </t>
+                <t t-if="not o.move_line_ids_without_package">
+                  <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
+                    <t t-foreach = "move_line.move_line_nosuggest_ids" t-as= "move_lot">
+                      <tr>
+                        <td>
+                          <span t-field = "move_line.product_id" />
+                        </td>
+                        <td>
+                          <span t-field = "move_lot.lot_id"/>
+                        </td>
+                        <td>
+                          <span t-field = "move_lot.qty_done"/>
+                        </td>
+                      </tr>
+                    </t>
+                  </t>  
                 </t>
               </tbody>
             </table>

@@ -2,45 +2,42 @@
 <odoo>
      <data>
           <report id="purchase_order_report" model="purchase.order" string="Purchase report" report_type="qweb-pdf" name="tsg_purchase_improves.purchase_order_report_template" file="tsg_purchase_improves.purchase_order_report_template"/>
-          <template id="stock_report_header" inherit_id="web.internal_layout">
-               <xpath expr="//div[@class='header']" position = "replace">
-                    <div class="header">
-                         <table style = "width: 100%; height:100px; border: black 1px solid">
-                              <tr>
-                                   <td style= "padding-left: 20px; padding-top: 10px; padding-bottom: 10px">
-                                        <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
-                                   </td>
-                                   <td>
-                                        <h5 style = "font-size: 30px; align: center">Purchase Order Report</h5>
-                                   </td>
-                                   <td>
-                                        <ul style = "align:center" class="list-inline">
-                                             <p>
-                                                  <li class="list-inline-item">
-                                                       <span class="page"/>
-                                                  </li>
-                                                  <li class="list-inline-item">/</li>
-                                                  <li class="list-inline-item">
-                                                       <span class="topage"/>
-                                                  </li>
-                                             </p>
-                                             <p>
-                                                  <li class= "list-inline-item">
-                                                       <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
-                                                  </li>
-                                             </p>
-                                        </ul>
-                                   </td>
-                              </tr>
-                         </table>
-                    </div>
-               </xpath>
-          </template>
           <template id="purchase_order_report_template">
                <t t-call = "web.html_container">
                     <t t-call = "web.internal_layout">
                          <t t-foreach="docs" t-as="o">
                               <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"/>
+                              <t t-set="company" t-value="o.env.company"/>
+                              <div class="header">
+                                   <table style = "width: 100%; height:100px; border: black 1px solid">
+                                        <tr>
+                                             <td style= "padding-left: 20px; padding-top: 10px; padding-bottom: 10px">
+                                                  <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
+                                             </td>
+                                             <td>
+                                                  <h5 style = "font-size: 30px; align: center">Purchase Order Report</h5>
+                                             </td>
+                                             <td>
+                                                  <ul style = "align:center" class="list-inline">
+                                                       <p>
+                                                            <li class="list-inline-item">
+                                                                 <span class="page"/>
+                                                            </li>
+                                                            <li class="list-inline-item">/</li>
+                                                            <li class="list-inline-item">
+                                                                 <span class="topage"/>
+                                                            </li>
+                                                       </p>
+                                                       <p>
+                                                            <li class= "list-inline-item">
+                                                                 <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                                            </li>
+                                                       </p>
+                                                  </ul>
+                                             </td>
+                                        </tr>
+                                   </table>
+                              </div>
                               <div style= "padding-bottom: 30px" class="container-fluid">
                                    <div class="row">
                                         <div class="col-7">
