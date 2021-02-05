@@ -81,7 +81,6 @@
               <thead>
                 <tr>
                   <td>Product</td>
-                  <td>Lot</td>
                   <td>Quantity</td>
                 </tr>
               </thead>
@@ -90,13 +89,10 @@
                   <t t-foreach = "o.move_line_ids_without_package" t-as= "move_lot">
                     <tr>
                       <td>
-                        <span t-field = "move_lot.product_id" />
+                        <span style= "font-size: 15px" t-field = "move_lot.product_id" />
                       </td>
                       <td>
-                        <span t-field = "move_lot.lot_id"/>
-                      </td>
-                      <td>
-                        <span t-field = "move_lot.qty_done"/>
+                        <span style= "font-size: 15px" t-field = "move_lot.qty_done"/>
                       </td>
                     </tr>
                   </t>  
@@ -106,13 +102,10 @@
                     <t t-foreach = "move_line.move_line_nosuggest_ids" t-as= "move_lot">
                       <tr>
                         <td>
-                          <span t-field = "move_line.product_id" />
+                          <span style= "font-size: 15px" t-field = "move_line.product_id" />
                         </td>
                         <td>
-                          <span t-field = "move_lot.lot_id"/>
-                        </td>
-                        <td>
-                          <span t-field = "move_lot.qty_done"/>
+                          <span style= "font-size: 15px" t-field = "move_lot.qty_done"/>
                         </td>
                       </tr>
                     </t>
