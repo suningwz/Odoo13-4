@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_product_supplier_tsg_inherit" model="ir.ui.view">
+        <field name="name">view.product.supplier.tsg.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='seller_ids']" position="before">
+                <button class="btn btn-primary" type="object" name="clean_seller_ids" string="Clear Duplicated Sellers"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
