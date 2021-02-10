@@ -25,7 +25,7 @@
             </xpath>
             <xpath expr="//page[@name='note']" position="after">
                 <page string="Attachments" name="attachments">
-                    <field name="attachment_ids"  widget="many2many_binary" colspan="2" string="Select Files" nolabel="1"/>
+                    <field name="attachment_ids"  widget="many2many_binary" colspan="2" string="Select Files" nolabel="1" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}"/>
                 </page>
             </xpath>
             <xpath expr="//field[@name='location_dest_id']" position="after">
@@ -36,6 +36,10 @@
                 <page string="Devolutions" name="devolutions" attrs= "{'invisible': [('is_devolution', '!=', False)]}">
                    <field name="devolution_related_ids" nolabel="1"  readonly="True"/>
                 </page>
+            </xpath>
+            <xpath expr="//field[@name='owner_id']" position="after">
+                <field name="apply_guide_number" invisible="1"/>
+                <field name="guide_number" attrs="{'invisible': [('apply_guide_number', '=', False)], 'required': [('apply_guide_number', '=', True)], 'readonly': [('state', 'in', ['done', 'cancel'])]}"/>
             </xpath>
         </field>
     </record>

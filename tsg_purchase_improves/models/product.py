@@ -63,3 +63,26 @@ class ProductProduct(models.Model):
             if not res or res.name == seller.partner_id:
                 res |= seller
         return res.sorted('price')[:1]
+
+
+
+class ProductTemplate(models.Model):
+    _name = "product.template"
+    _inherit = "product.template"
+
+    def clean_seller_ids(self):
+        for record in self.env['product.template'].search([('id', '!=', 0)]):
+            if record.seller_ids:
+                to_delete_ids = []
+                for seller_cost_line in record.seller_ids:
+                    if not seller_cost_line.id in to_delete_ids:
+                        for seller_to_validate in record.seller_ids:
+                            if seller_to_validate.partner_id == seller_cost_line.partner_id and seller_to_validate.price == seller_cost_line.price and seller_to_validate.date_start == seller_cost_line.date_start and seller_to_validate.id != seller_cost_line.id:
+                                if not seller_to_validate.date_end and seller_cost_line.date_end:
+                                    to_delete_ids.append(seller_cost_line.id)
+                                else:
+                                    if not seller_to_validate.id in to_delete_ids:
+                                        to_delete_ids.append(seller_to_validate.id)
+                for line_to_delete_id in to_delete_ids:
+                    line_to_delete = self.env['product.supplierinfo'].browse(line_to_delete_id)
+                    line_to_delete.unlink()

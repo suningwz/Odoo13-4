@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-05 20:49+0000\n"
-"PO-Revision-Date: 2021-02-05 20:49+0000\n"
+"POT-Creation-Date: 2021-02-10 22:05+0000\n"
+"PO-Revision-Date: 2021-02-10 22:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -55,6 +55,11 @@ msgstr ""
 "                    Prioridad:"
 
 #. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__apply_guide_number
+msgid "Apply Guide Number?"
+msgstr ""
+
+#. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Associate:"
 msgstr "Socio:"
@@ -80,6 +85,11 @@ msgstr "Origen de Devolución"
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
 msgid "Devolutions"
 msgstr "Devoluciones"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__guide_number
+msgid "Guide Number"
+msgstr "Número de Guía"
 
 #. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__is_devolution

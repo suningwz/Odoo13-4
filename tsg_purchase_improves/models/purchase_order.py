@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from itertools import product
 from odoo import models, fields, api
 from odoo.tools.translate import _
 from dateutil.relativedelta import relativedelta
@@ -22,9 +23,6 @@ class PurchaseOrder(models.Model):
             # Do not add a contact as a supplier
             partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
             if line.product_id and partner:
-                for seller_id in line.product_id.seller_ids:
-                    if seller_id.partner_id == partner and not seller_id.date_end:
-                        seller_id.sudo().write({'date_end': date.today()})
                 # Convert the price in the right currency.
                 currency = partner.property_purchase_currency_id or self.env.company.currency_id
                 price = self.currency_id._convert(line.price_unit, currency, line.company_id, line.date_order or fields.Date.today(), round=False)
@@ -43,6 +41,7 @@ class PurchaseOrder(models.Model):
                     'date_start': date.today(),
                     'delay': 0,
                 }
+
                 # In case the order partner is a contact address, a new supplierinfo is created on
                 # the parent company. In this case, we keep the product name and code.
                 seller = line.product_id._select_seller(
@@ -57,7 +56,17 @@ class PurchaseOrder(models.Model):
                     'seller_ids': [(0, 0, supplierinfo)],
                 }
                 try:
-                    line.product_id.write(vals)
+                    ### IF THERE IS A LINE WITH THE SAME VALUES ---> IGNORE ###
+                    existent_supplier_info = False                    
+                    for existent_line in line.product_id.seller_ids:
+                        if existent_line.price == supplierinfo["price"] and existent_line.partner_id.id == supplierinfo["partner_id"] and existent_line.date_start == supplierinfo["date_start"]:
+                            existent_supplier_info = True
+                    if not existent_supplier_info:
+                        for seller_id in line.product_id.seller_ids:
+                            if seller_id.partner_id == partner and not seller_id.date_end:
+                                seller_id.sudo().write({'date_end': date.today()})
+                    ### IF THERE IS A LINE WITH THE SAME VALUES ---> IGNORE ###
+                        line.product_id.write(vals)
                 except AccessError:  # no write access rights -> just ignore
                     break
     
