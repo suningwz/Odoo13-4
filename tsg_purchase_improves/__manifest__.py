@@ -27,7 +27,7 @@
         'views/purchase_order_view.xml',
         'views/res_partner_views.xml',
         'views/product_supplierinfo_views.xml',
-        'views/product_template_views.xml',
+        #'views/product_template_views.xml',
         'reports/purchase_order_report.xml',
     ],
     'installable': True,
