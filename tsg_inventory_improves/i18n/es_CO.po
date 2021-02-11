@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 22:05+0000\n"
-"PO-Revision-Date: 2021-02-10 22:05+0000\n"
+"POT-Creation-Date: 2021-02-11 22:00+0000\n"
+"PO-Revision-Date: 2021-02-11 22:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,45 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/models/stock_picking.py:0
+#, python-format
+msgid ""
+"\n"
+"\t For the product %s was assigned the Serial Number: %s"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "&amp;bull;"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid ""
+"<br/>\n"
+"                                    Adress:"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid ""
+"<br/>\n"
+"                                    NIT:"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid ""
+"<br/>\n"
+"                                    Phone:"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid ""
+"<br/>\n"
+"                                    Priority:"
 msgstr ""
 
 #. module: tsg_inventory_improves
@@ -55,11 +92,22 @@ msgstr ""
 "                    Prioridad:"
 
 #. module: tsg_inventory_improves
-#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__apply_guide_number
-msgid "Apply Guide Number?"
-msgstr ""
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__message
+msgid "Alert"
+msgstr "Alerta"
 
 #. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__apply_guide_number
+msgid "Apply Guide Number?"
+msgstr "Aplica para Número de Guía?"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid "Asked Quantity"
+msgstr "Cantidad Solicitada"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Associate:"
 msgstr "Socio:"
@@ -76,6 +124,21 @@ msgid "Available"
 msgstr "Disponible"
 
 #. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid "Available Quantity"
+msgstr "Cantidad Disponible"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__create_uid
+msgid "Created by"
+msgstr "Creado Por"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__create_date
+msgid "Created on"
+msgstr "Creado En"
+
+#. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__devolution_origin_id
 msgid "Devolution Origin"
 msgstr "Origen de Devolución"
@@ -87,9 +150,29 @@ msgid "Devolutions"
 msgstr "Devoluciones"
 
 #. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__display_name
+msgid "Display Name"
+msgstr "Nombre para Mostrar"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
+msgid "Entry Order"
+msgstr "Orden de Entrada"
+
+#. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__guide_number
 msgid "Guide Number"
 msgstr "Número de Guía"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__id
+msgid "ID"
+msgstr "ID"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
+msgid "Internal Transfer"
+msgstr "Tranferencia Interna"
 
 #. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__is_devolution
@@ -97,9 +180,48 @@ msgid "Is Devolution?"
 msgstr "¿Es una devolución?"
 
 #. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Logo"
 msgstr ""
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/models/stock_picking.py:0
+#, python-format
+msgid "Lot Reserved Warning!"
+msgstr "Alerta por Reserva de No. de Serie!"
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Next you'll see the specific Serial Numbers reserved for some products:"
+msgstr ""
+"A continuacón vera los Números de Serie reservados para algunos productos:"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid ""
+"Notes:\n"
+"                                    <br/>"
+msgstr ""
+"Notas:\n"
+"                                    <br/>"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
@@ -114,6 +236,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__partner_parent_id
 msgid "Owner"
 msgstr "Propietario"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
+msgid "Partial Avalability Report"
+msgstr "Reporte de Disponibilidad Parcial"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
@@ -131,6 +258,7 @@ msgid "Please specify at least one non-zero quantity."
 msgstr "Especifique por favor al menos una cantidad no nula."
 
 #. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Product"
 msgstr "Producto:"
@@ -141,6 +269,7 @@ msgid "Project"
 msgstr "Proyecto"
 
 #. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_partial_availability_template
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Project:"
 msgstr "Proyecto:"
@@ -154,6 +283,11 @@ msgstr "Cantidad"
 #: model:ir.model,name:tsg_inventory_improves.model_stock_quant
 msgid "Quants"
 msgstr "Cants"
+
+#. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
+msgid "Remission"
+msgstr "Remisión"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
@@ -182,10 +316,20 @@ msgid "Stock Move"
 msgstr "Movimiento de Existencias"
 
 #. module: tsg_inventory_improves
+#: model:ir.actions.report,name:tsg_inventory_improves.stock_picking_partial_availability_report_action
+msgid "Stock Partial Availability Report"
+msgstr "Reporte de Disponibilidad Parcial"
+
+#. module: tsg_inventory_improves
 #: model:ir.actions.report,name:tsg_inventory_improves.stock_picking_report
-#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
 msgid "Stock Report"
 msgstr "Reporte de Albarán"
+
+#. module: tsg_inventory_improves
+#: code:addons/tsg_inventory_improves/models/stock_picking.py:0
+#, python-format
+msgid "The field Guide Number must be filled before validate the quantities."
+msgstr "El campo Número de Guía debe estar diligenciado antes de Validar las cantidades."
 
 #. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_stock_picking
@@ -193,8 +337,18 @@ msgid "Transfer"
 msgstr "Transferir"
 
 #. module: tsg_inventory_improves
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.lot_reserved_warning_form_view
+msgid "Warning!"
+msgstr "Alerta!"
+
+#. module: tsg_inventory_improves
 #: code:addons/tsg_inventory_improves/wizard/stock_picking_return.py:0
 #, python-format
 msgid ""
 "You have manually created product lines, please delete them to proceed."
 msgstr "Ha creado líneas de productos manualmente, elimínelas para continuar."
+
+#. module: tsg_inventory_improves
+#: model:ir.model,name:tsg_inventory_improves.model_lot_reserved_warning
+msgid "lot.reserved.warning"
+msgstr "lot.reserved.warning"

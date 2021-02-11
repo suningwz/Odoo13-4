@@ -23,7 +23,7 @@
                                     <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
                                 </td>
                                 <td>
-                                    <h5 style = "font-size: 30px; align: center">Stock Report</h5>
+                                    <h5 style = "font-size: 30px; align: center">Partial Avalability Report</h5>
                                 </td>
                                 <td>
                                     <ul style = "align:center" class="list-inline">
@@ -84,30 +84,47 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td>Product</td>
-                                <td>Asked Quantity</td>
-                                <td>Available Quantity</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
+                    <center>
+                        <table style="text-align: left; width: 720px; border-collapse: collapse; border: 1px solid black; margin-bottom: 50px; margin-top: 20px; width:100%%" cellspacing="0">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <span style= "font-size: 10px" t-field = "move_line.product_id" />
-                                    </td>
-                                    <td>
-                                        <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
-                                    </td>
-                                    <td>
-                                        <span style= "font-size: 10px" t-field = "move_line.reserved_availability"/>
-                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 5px; text-align: center;">Product</td>
+                                    <td style="border: 1px solid black; padding-left: 5px; text-align: center;">Asked Quantity</td>
+                                    <td style="border: 1px solid black; padding-left: 5px; text-align: center;">Available Quantity</td>
                                 </tr>
-                            </t>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
+                                    <t t-if="move_line.product_uom_qty != move_line.reserved_availability">
+                                        <tr style="background-color: #D96D6D;">
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.product_id" />
+                                            </td>
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
+                                            </td>
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.reserved_availability"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="move_line.product_uom_qty == move_line.reserved_availability">
+                                        <tr>
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.product_id" />
+                                            </td>
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
+                                            </td>
+                                            <td style="border: 1px solid black; padding-left: 5px">
+                                                <span style= "font-size: 10px" t-field = "move_line.reserved_availability"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </center>
                     <div class="footer o_background_footer din">
                         <table class="text-center" style = "width: 100%; border-top: 1px solid black">
                             <tr>

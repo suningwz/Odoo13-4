@@ -18,7 +18,15 @@
                     <img t-if = "company.logo" t-att-src = "image_data_uri(company.logo)" alt= "Logo"/>
                   </td>
                   <td>
-                    <h5 style = "font-size: 30px; align: center">Stock Report</h5>
+                    <t t-if="o.picking_type_code == 'outgoing'">
+                      <h5 style = "font-size: 30px; align: center">Remission</h5>
+                    </t>
+                    <t t-if="o.picking_type_code == 'incoming'">
+                      <h5 style = "font-size: 30px; align: center">Entry Order</h5>
+                    </t>
+                    <t t-if="o.picking_type_code == 'internal'">
+                      <h5 style = "font-size: 30px; align: center">Internal Transfer</h5>
+                    </t>
                   </td>
                   <td>
                     <ul style = "align:center" class="list-inline">
@@ -79,40 +87,42 @@
                 </div>
               </div>
             </div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <td>Product</td>
-                  <td>Quantity</td>
-                </tr>
-              </thead>
-              <tbody>
-                <t t-if="o.move_line_ids_without_package">
-                  <t t-foreach = "o.move_line_ids_without_package" t-as= "move_lot">
-                    <tr>
-                      <td>
-                        <span style= "font-size: 10px" t-field = "move_lot.product_id" />
-                      </td>
-                      <td>
-                        <span style= "font-size: 10px" t-field = "move_lot.qty_done"/>
-                      </td>
-                    </tr>
-                  </t>  
-                </t>
-                <t t-if="not o.move_line_ids_without_package">
-                  <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
-                    <tr>
-                      <td>
-                        <span style= "font-size: 10px" t-field = "move_line.product_id" />
-                      </td>
-                      <td>
-                        <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
-                      </td>
-                    </tr>
-                  </t>  
-                </t>
-              </tbody>
-            </table>
+            <center>
+              <table style="text-align: left; width: 720px; border-collapse: collapse; border: 1px solid black; margin-bottom: 50px; margin-top: 20px; width:100%%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <td style="border: 1px solid black; padding-left: 5px; text-align: center;">Product</td>
+                    <td style="border: 1px solid black; padding-left: 5px; text-align: center;">Quantity</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-if="o.move_line_ids_without_package">
+                    <t t-foreach = "o.move_line_ids_without_package" t-as= "move_lot">
+                      <tr>
+                        <td style="border: 1px solid black; padding-left: 5px">
+                          <span style= "font-size: 10px" t-field = "move_lot.product_id" />
+                        </td>
+                        <td style="border: 1px solid black; padding-left: 5px">
+                          <span style= "font-size: 10px" t-field = "move_lot.qty_done"/>
+                        </td>
+                      </tr>
+                    </t>  
+                  </t>
+                  <t t-if="not o.move_line_ids_without_package">
+                    <t t-foreach = "o.move_ids_without_package" t-as= "move_line">
+                      <tr>
+                        <td style="border: 1px solid black; padding-left: 5px">
+                          <span style= "font-size: 10px" t-field = "move_line.product_id" />
+                        </td>
+                        <td style="border: 1px solid black; padding-left: 5px">
+                          <span style= "font-size: 10px" t-field = "move_line.product_uom_qty"/>
+                        </td>
+                      </tr>
+                    </t>  
+                  </t>
+                </tbody>
+              </table>
+            </center>
             <p>
               Picking Notes: 
               <br/>
