@@ -39,7 +39,10 @@
             </xpath>
             <xpath expr="//field[@name='owner_id']" position="after">
                 <field name="apply_guide_number" invisible="1"/>
-                <field name="guide_number" attrs="{'invisible': [('apply_guide_number', '=', False)], 'required': [('apply_guide_number', '=', True)], 'readonly': [('state', 'in', ['done', 'cancel'])]}"/>
+                <field name="guide_number" attrs="{'invisible': [('apply_guide_number', '=', False)], 'readonly': [('state', 'in', ['done', 'cancel'])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']/tree" position="attributes">
+                <attribute name="decoration-danger">product_uom_qty!=reserved_availability</attribute>
             </xpath>
         </field>
     </record>

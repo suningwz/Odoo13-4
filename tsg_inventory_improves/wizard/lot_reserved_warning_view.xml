@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="lot_reserved_warning_form_view" model="ir.ui.view">
+        <field name="name">lot.reserved.warning.form.view</field>
+        <field name="model">lot.reserved.warning</field>
+        <field name="arch" type="xml">
+            <form string="Warning!">
+                <group>
+                    <field name="message" nolabel="1" readonly="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

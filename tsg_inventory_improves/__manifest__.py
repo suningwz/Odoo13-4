@@ -16,7 +16,9 @@
     'depends' : ['stock'],
     'data': [
         'views/stock_picking_views.xml',
+        'wizard/lot_reserved_warning_view.xml',
         'reports/stock_picking_report.xml',
+        'reports/partial_availability_report.xml',
     ],
     'installable': True,
     'auto_install': False,
