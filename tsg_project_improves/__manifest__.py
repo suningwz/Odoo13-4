@@ -14,9 +14,14 @@
     """,
     'category': 'Project',
     'website': 'https://www.tsg.net.co/',
-    'depends' : ['project'],
+    'depends' : [
+        'project',
+        'tsg_inventory_improves',
+    ],
     'data': [
         'views/project_views.xml',
+        'views/stock_picking_view.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
     'auto_install': False,

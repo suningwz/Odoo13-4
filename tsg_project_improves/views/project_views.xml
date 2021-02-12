@@ -39,7 +39,17 @@
                     </group>
                 </page>
             </xpath>
-            
+            <xpath expr="//notebook/page[@name='settings']" position="before">
+                <page name="product_list" string="Product List">
+                    <field name="product_list_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="product_id" width="40%%"/>
+                            <field name="required_qty" width="40%%"/>
+                            <field name="product_uom" width="20%%"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>     
         </field>
     </record>
 

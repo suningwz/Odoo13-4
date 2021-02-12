@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_tsg_inherit_2" model="ir.ui.view">
+        <field name="name">view.picking.form.tsg.inherit.2</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="tsg_inventory_improves.view_picking_form_tsg_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']" position="after">
+                <field name="take_product_list_from_project" attrs="{'invisible': ['|', ('project_id', '=', False), ('picking_type_code', '!=', 'outgoing')]}"/>
+                <field name="multiplicity" attrs="{'invisible': ['|', ('take_product_list_from_project', '!=', True), ('picking_type_code', '!=', 'outgoing')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']" position="before">
+                <button class="btn btn-primary" type="object" name="update_list_multiplicity" string="Get Product List For Project" attrs="{'invisible': ['|', ('take_product_list_from_project', '!=', True), '|', ('picking_type_code', '!=', 'outgoing'), '|', ('multiplicity', '=', 0) , ('multiplicity', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
