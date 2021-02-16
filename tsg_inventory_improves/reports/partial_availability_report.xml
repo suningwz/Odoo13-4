@@ -125,6 +125,12 @@
                             </tbody>
                         </table>
                     </center>
+                    <p>
+                        Picking Notes: 
+                        <br/>
+                        <span style="font-size: 10px" t-field = "o.note"/>
+                        <br/>
+                    </p>
                     <div class="footer o_background_footer din">
                         <table class="text-center" style = "width: 100%; border-top: 1px solid black">
                             <tr>
