@@ -1,80 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
      <record id="audit_view_form_tsg" model="ir.ui.view">
-          <field name="name">audit.view.form.tsg</field>
-          <field name="model">tsg.audit</field>
-          <field name="arch" type="xml">
-               <form string="Audit">
-                    <header>
-                       <button string="Load Partner Information" name="load_partner_information" type="object" class="oe_highlight"/>
-                    </header>
-                    <sheet>
-                        <group name= "partner_info" string= "Partner info">
-                            <field name="partner"/>
-                            <field name="project"/>
-                            <field name="contact" domain= "[('parent_id','=',partner)]"/>
-                        </group>
-                        <notebook>      
-                             <page name="tsg_audit_line_ids" string="Audit Lines">
-                                 <field name="tsg_audit_line_ids"/> 
-                             </page>
-                        </notebook>  
-                    </sheet>
-               </form>   
-          </field>
+        <field name="name">audit.view.form.tsg</field>
+        <field name="model">tsg.audit</field>
+        <field name="arch" type="xml">
+            <form string="Audit">
+                <header>
+                    <button string="Load Partner Information" name="load_partner_information" type="object" class="oe_highlight"/>   
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="get_tsg_audit_lines" type="object" icon="fa-bars" attrs="{'invisible':[('tsg_audit_lines_count','=', 0)]}" >
+                            <field name="tsg_audit_lines_count"/>
+                            <span attrs="{'invisible':[('tsg_audit_lines_count','&gt;',1)]}">Audit Line</span>
+                            <span attrs="{'invisible':[('tsg_audit_lines_count','&lt;=',1)]}">Audit Lines</span>
+                        </button>
+                    </div>
+                    <h1>
+                        AUDIT 
+                        <br/>
+                        <field name="name"/> 
+                    </h1>
+                    <group name= "partner_info" string= "Partner info">
+                        <field name="partner_id" style="width:40%%"/>
+                        <field name="project_id" domain= "[('partner_id','=',partner_id)]" style="width:40%%"/>
+                        <field name="contact_id" domain= "[('parent_id','=',partner_id)]" style="width:40%%"/>
+                    </group>
+                    <notebook>      
+                        <page name="tsg_audit_line_ids" string="Audit Lines">
+                            <field name="tsg_audit_line_ids" readonly="1"/> 
+                        </page>
+                    </notebook>  
+                </sheet>
+            </form>   
+        </field>
      </record>
      <record id="audit_view_tree_tsg" model="ir.ui.view">
-          <field name="name">audit.view.tree.tsg</field>
-          <field name="model">tsg.audit</field>
-          <field name="arch" type="xml">
-               <tree>
-                   <field name="partner"/>
-                   <field name="project"/>
-                   <field name="contact"/>
-               </tree>
-          </field>
+        <field name="name">audit.view.tree.tsg</field>
+        <field name="model">tsg.audit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="contact_id"/>
+            </tree>
+        </field>
      </record>
      
      <record id="audit_line_view_form_tsg" model="ir.ui.view">
-          <field name="name">audit.line.view.form.tsg</field>
-          <field name="model">tsg.audit.line</field>
-          <field name="arch" type="xml">
-               <form string="Audit_line">
-                    <sheet>
-                        <group name= "partner_info" string= "Partner info">
-                            <field name="stock_picking_id"/>
-                            <field name="product_id"/>
-                            <field name="product_uom"/>
-                            <field name="requested_qty"/>
-                            <field name="done_qty"/>
-                            <field name="installed_qty"/>
-                            <field name="diff_qty"/>
-                            <field name="average_cost"/>
+        <field name="name">audit.line.view.form.tsg</field>
+        <field name="model">tsg.audit.line</field>
+        <field name="arch" type="xml">
+            <form string="Audit_line">
+                <sheet>
+                    <group name= "Basic_info" string= "Basic info">
+                        <field name="stock_picking_id"/>
+                        <field name="product_id"/>
+                        <field name="product_uom"/>
                         </group>
-                        <notebook>
-                             <!-- <page name="tsg_audit_line_ids" string="Audit Lines">
-                                 <field name="tsg_audit_line_ids"/> 
-                             </page> -->
-                        </notebook>  
-                    </sheet>
-               </form>   
-          </field>
+                        <group name="qty_info" string="Quantity Info">
+                        <field name="requested_qty"/>
+                        <field name="done_qty"/>
+                        <field name="installed_qty"/>
+                        <field name="diff_qty"/>
+                        <field name="average_cost"/>
+                    </group>
+                </sheet>
+                <notebook>
+                    <page name="observation" string="Observation">
+                        <field name="observation"/>
+                    </page>
+                </notebook>
+            </form>   
+        </field>
      </record>
      <record id="audit_line_view_tree_tsg" model="ir.ui.view">
-          <field name="name">audit.line.view.tree.tsg</field>
-          <field name="model">tsg.audit.line</field>
-          <field name="arch" type="xml">
-               <tree>
-                    <field name="stock_picking_id" width="15%%"/>
-                    <field name="product_id" width="15%%"/>
-                    <field name="product_uom" width= "10%%"/>
-                    <field name="requested_qty" width= "10%%"/>
-                    <field name="done_qty" width="10%%"/>
-                    <field name="installed_qty" width="10%%"/>
-                    <field name="diff_qty" width="10%%"/>
-                    <field name="average_cost" width="10%%"/>
-                    <field name="observation" width="10%%"/>
-               </tree>
-          </field>
+        <field name="name">audit.line.view.tree.tsg</field>
+        <field name="model">tsg.audit.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="stock_picking_id" width="15%%"/>
+                <field name="product_id" width="15%%"/>
+                <field name="product_uom" width= "10%%"/>
+                <field name="requested_qty" width= "10%%"/>
+                <field name="done_qty" width="10%%"/>
+                <field name="installed_qty" width="10%%"/>
+                <field name="diff_qty" width="10%%"/>
+                <field name="average_cost" width="10%%"/>
+                <field name="observation" width="10%%"/>
+            </tree>
+        </field>
      </record>     
 
 

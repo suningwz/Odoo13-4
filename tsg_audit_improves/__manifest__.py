@@ -8,7 +8,9 @@
           'stock',
           'project',], 
      'data': [
+          'data/sequence.xml',
           'views/audit.xml',
+          'security/security.xml',
           'security/ir.model.access.csv',
      ],
      'installable': True,

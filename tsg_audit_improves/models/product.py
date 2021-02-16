@@ -1,8 +1,6 @@
 from odoo import models
-"""
-Buscar y heredar la clase de productos "product.product"
-Hacer una funcion que tome la lista de precios de compra y haga un promedio de costo solamente con los que esten activos (que no tienen fecha final) y que al final retorne dicho promedio.
-"""
+
+
 class ProductProduct(models.Model):
      _name = "product.product"
      _inherit = "product.product"

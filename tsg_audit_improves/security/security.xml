@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="audit_security_group">
+        <field name="name">Audit</field>
+        <field name="description">User access level for Audit module</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="audit_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="audit_security_group"/>
+    </record>
+
+    <record id="audit_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="audit_security_group"/>
+        <field name="implied_ids" eval="[(4, ref('audit_user'))]"/>
+    </record>
+
+</odoo>
