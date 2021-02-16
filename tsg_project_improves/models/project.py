@@ -12,7 +12,7 @@ class Project(models.Model):
     coverage = fields.Selection(selection=[('national', 'National'), ('international', 'International'), ('local', 'Local')], string='Coverage')
     notes = fields.Text(string='Notes')
     description = fields.Text(string='Description')
-    product_list_ids = fields.One2many(comodel_name='project.product.list', inverse_name='project_id', string="Product List")
+    product_list_ids = fields.One2many(comodel_name='project.product.list', inverse_name='project_id', string="Product List", copy=True)
 
 class ProjectProductList(models.Model):
     _name = 'project.product.list'
