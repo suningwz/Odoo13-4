@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_tsg_audit_user","access.tsg.audit.user","model_tsg_audit",audit_user,1,0,0,0
+"access_tsg_audit_manager","access.tsg.audit.manager","model_tsg_audit",audit_manager,1,1,1,1
+"access_tsg_audit_line_user","access.tsg.audit.line.user","model_tsg_audit_line",audit_user,1,0,0,0
+"access_tsg_audit_line_manager","access.tsg.audit.line.manager","model_tsg_audit_line",audit_manager,1,1,1,1

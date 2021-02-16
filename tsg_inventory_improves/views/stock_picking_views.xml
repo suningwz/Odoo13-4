@@ -13,7 +13,7 @@
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="partner_parent_id" invisible="1"/>
-                <field name="project_id" domain="['|', ('partner_id', '=', partner_id),('partner_id', '=', partner_parent_id),('partner_id','!=',False)]"/>
+                <field name="project_id" domain="['|', ('partner_id', '=', partner_id),('partner_id', '=', partner_parent_id),('partner_id','!=',False)]" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="required">True</attribute>
