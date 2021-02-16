@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-11 22:00+0000\n"
-"PO-Revision-Date: 2021-02-11 22:00+0000\n"
+"POT-Creation-Date: 2021-02-16 20:05+0000\n"
+"PO-Revision-Date: 2021-02-16 20:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,6 @@ msgid "Associate:"
 msgstr "Socio:"
 
 #. module: tsg_inventory_improves
-#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__attachment_ids
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
 msgid "Attachments"
 msgstr "Archivos Adjuntos"
@@ -167,7 +166,13 @@ msgstr "Número de Guía"
 #. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_lot_reserved_warning__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__attachment_ids
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
+msgid "Incoming Attachments"
+msgstr "Adjuntos de Entrada"
 
 #. module: tsg_inventory_improves
 #: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.stock_picking_report_template
@@ -231,6 +236,12 @@ msgid ""
 msgstr ""
 "Notas:\n"
 "                    <br/>"
+
+#. module: tsg_inventory_improves
+#: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__outgoing_attachment_ids
+#: model_terms:ir.ui.view,arch_db:tsg_inventory_improves.view_picking_form_tsg_inherit
+msgid "Outgoing Attachments"
+msgstr "Adjuntos de Salida"
 
 #. module: tsg_inventory_improves
 #: model:ir.model.fields,field_description:tsg_inventory_improves.field_stock_picking__partner_parent_id
@@ -329,7 +340,9 @@ msgstr "Reporte de Albarán"
 #: code:addons/tsg_inventory_improves/models/stock_picking.py:0
 #, python-format
 msgid "The field Guide Number must be filled before validate the quantities."
-msgstr "El campo Número de Guía debe estar diligenciado antes de Validar las cantidades."
+msgstr ""
+"El campo Número de Guía debe estar diligenciado antes de Validar las "
+"cantidades."
 
 #. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_stock_picking
@@ -351,4 +364,4 @@ msgstr "Ha creado líneas de productos manualmente, elimínelas para continuar."
 #. module: tsg_inventory_improves
 #: model:ir.model,name:tsg_inventory_improves.model_lot_reserved_warning
 msgid "lot.reserved.warning"
-msgstr "lot.reserved.warning"
+msgstr ""

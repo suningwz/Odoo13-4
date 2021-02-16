@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210120\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-16 15:45+0000\n"
-"PO-Revision-Date: 2021-02-16 15:45+0000\n"
+"POT-Creation-Date: 2021-02-16 19:58+0000\n"
+"PO-Revision-Date: 2021-02-16 19:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_view_form_tsg
 msgid ""
 "<span attrs=\"{'invisible':[('tsg_audit_lines_count','&gt;',1)]}\">Audit Line</span>\n"
-"                        <span attrs=\"{'invisible':[('tsg_audit_lines_count','&lt;=',1)]}\">Audit Lines</span>"
+"                            <span attrs=\"{'invisible':[('tsg_audit_lines_count','&lt;=',1)]}\">Audit Lines</span>"
 msgstr ""
 
 #. module: tsg_audit_improves
@@ -30,6 +30,11 @@ msgid ""
 msgstr ""
 "AUDITORÍA \n"
 "                        <br/>"
+
+#. module: tsg_audit_improves
+#: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_view_form_tsg
+msgid "Attachments"
+msgstr "Archivos Adjuntos"
 
 #. module: tsg_audit_improves
 #: model:ir.actions.act_window,name:tsg_audit_improves.action_view_audit
@@ -56,6 +61,11 @@ msgstr "Análisis de Lineas de Auditoria"
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit__name
 msgid "Audit Number"
 msgstr "Número de Auditoría"
+
+#. module: tsg_audit_improves
+#: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_view_form_tsg
+msgid "Audit Results and Attachments"
+msgstr "Resultados y Archivos Adjuntos"
 
 #. module: tsg_audit_improves
 #: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_line_view_form_tsg
@@ -90,20 +100,10 @@ msgid "Created on"
 msgstr ""
 
 #. module: tsg_audit_improves
-#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__diff_qty
-msgid "Difference Quantity"
-msgstr "Cantidad de Diferencia"
-
-#. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit__display_name
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__display_name
 msgid "Display Name"
 msgstr ""
-
-#. module: tsg_audit_improves
-#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__done_qty
-msgid "Done Quantity"
-msgstr "Cantidad Realizada"
 
 #. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit__id
@@ -114,7 +114,7 @@ msgstr ""
 #. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__installed_qty
 msgid "Installed Quantity"
-msgstr "Cantidad Instalada"
+msgstr "Cant. Instalada"
 
 #. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit____last_update
@@ -143,6 +143,11 @@ msgstr "Cargar Información de Cliente/Sede"
 #: model:res.groups,name:tsg_audit_improves.audit_manager
 msgid "Manager"
 msgstr "Administrador"
+
+#. module: tsg_audit_improves
+#: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_view_form_tsg
+msgid "Notes"
+msgstr "Notas"
 
 #. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__observation
@@ -177,9 +182,44 @@ msgid "Quantity Info"
 msgstr "Información de Cantidad"
 
 #. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__done_qty
+msgid "Quantity Sent"
+msgstr "Cant. Enviada"
+
+#. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__real_remaining_qty
+msgid "Real Remaining Quantity"
+msgstr "Cant. Sobrante Real"
+
+#. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__refund_qty
+msgid "Refund Quantity"
+msgstr "Cant. Devuelta"
+
+#. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__diff_qty
+msgid "Remaing Quantity"
+msgstr "Cant. Sobrante"
+
+#. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__requested_qty
 msgid "Requested Quantity"
-msgstr "Cantidad Solicitada"
+msgstr "Cant. Solicitada"
+
+#. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit__audit_results_attachments
+msgid "Result Attachments"
+msgstr "Adjuntos de Resultados"
+
+#. module: tsg_audit_improves
+#: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit__audit_results_notes
+msgid "Result Notes"
+msgstr "Notas de Resultados"
+
+#. module: tsg_audit_improves
+#: model_terms:ir.ui.view,arch_db:tsg_audit_improves.audit_view_form_tsg
+msgid "Select Files"
+msgstr "Seleccionar Archivos"
 
 #. module: tsg_audit_improves
 #: model:ir.model.fields,field_description:tsg_audit_improves.field_tsg_audit_line__stock_picking_id

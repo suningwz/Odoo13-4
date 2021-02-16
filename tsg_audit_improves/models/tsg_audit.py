@@ -14,6 +14,8 @@ class TsgAudit(models.Model):
     contact_id = fields.Many2one(comodel_name='res.partner',string="Contact")
     tsg_audit_line_ids = fields.One2many(comodel_name='tsg.audit.line', inverse_name= 'audit_id', string="Audit Lines")
     tsg_audit_lines_count = fields.Integer(compute='_compute_tsg_audit_line_ids')
+    audit_results_notes = fields.Text(string="Result Notes")
+    audit_results_attachments = fields.Many2many(comodel_name='ir.attachment', relation='attachments_for_audit',column1='audit_id', column2='att_id',string='Result Attachments')
 
     @api.model
     def create(self, vals):
@@ -48,7 +50,7 @@ class TsgAudit(models.Model):
                                 "diff_qty" : 0,
                                 "average_cost" : move_line.product_id.get_average_cost() 
                                 }
-                                self.env['tsg.audit.line'].create(values)
+                                self.env['tsg.audit.line'].sudo().create(values)
     
     def get_tsg_audit_lines(self):
         return {
@@ -63,22 +65,33 @@ class TsgAudit(models.Model):
 class TsgAuditLine (models.Model):
     _name = "tsg.audit.line"
 
-    audit_id = fields.Many2one(comodel_name='tsg.audit', string="Audit")
-    stock_picking_id = fields.Many2one (comodel_name='stock.picking', string = "Stock Picking") 
-    stock_picking_line_id = fields.Many2one (comodel_name='stock.move', string= "Stock Picking Line") 
-    product_id = fields.Many2one (comodel_name='product.product', string= "Product")
-    product_uom = fields.Many2one (comodel_name='uom.uom', string="Unit of Measure")
-    requested_qty =  fields.Float (string='Requested Quantity')
-    done_qty = fields.Float (string='Done Quantity')
-    diff_qty = fields.Float (string='Difference Quantity')
+    audit_id = fields.Many2one(comodel_name='tsg.audit', string="Audit", readonly=True)
+    stock_picking_id = fields.Many2one (comodel_name='stock.picking', string = "Stock Picking", readonly=True) 
+    stock_picking_line_id = fields.Many2one (comodel_name='stock.move', string= "Stock Picking Line", readonly=True) 
+    product_id = fields.Many2one (comodel_name='product.product', string= "Product", readonly=True)
+    product_uom = fields.Many2one (comodel_name='uom.uom', string="Unit of Measure", readonly=True)
+    requested_qty =  fields.Float (string='Requested Quantity', readonly=True)
+    done_qty = fields.Float (string='Quantity Sent', readonly=True)
+    diff_qty = fields.Float (compute='_get_diff_qty', string='Remaing Quantity')
     installed_qty = fields.Float (string='Installed Quantity')
     observation = fields.Text (string= 'Observation')
-    average_cost = fields.Float (string= 'Average Cost')
+    average_cost = fields.Float (string= 'Average Cost', readonly=True)
+    real_remaining_qty = fields.Float(string='Real Remaining Quantity')
+    refund_qty = fields.Float(compute='_get_refund_qty', string="Refund Quantity")
 
-    @api.onchange('installed_qty', 'done_qty')
-    def onchange_qty(self):
-        self.diff_qty = (self.installed_qty or 0) - (self.done_qty or 0)
+    def _get_diff_qty(self):
+        for record in self:
+            record.diff_qty = (record.done_qty or 0) - (record.installed_qty or 0)
 
+    def _get_refund_qty(self):
+        for record in self:
+            if record.stock_picking_id and record.product_id:
+                refund_qty = 0
+                for refund_picking in record.stock_picking_id.devolution_related_ids:
+                    for refund_line in refund_picking.move_ids_without_package:
+                        if refund_line.product_id == record.product_id:
+                            refund_qty += refund_line.quantity_done
+                record.refund_qty = refund_qty
 
 
 

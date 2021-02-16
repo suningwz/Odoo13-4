@@ -30,6 +30,14 @@
                         <page name="tsg_audit_line_ids" string="Audit Lines">
                             <field name="tsg_audit_line_ids" readonly="1"/> 
                         </page>
+                        <page name="tsg_audit_results" string="Audit Results and Attachments">
+                            <group name="attachments" string="Attachments">
+                                <field name="audit_results_attachments" widget="many2many_binary" colspan="2" string="Select Files" nolabel="1"/> 
+                            </group>
+                            <group name="notes" string="Notes">
+                                <field name="audit_results_notes" nolabel="1"/>
+                            </group>
+                        </page>
                     </notebook>  
                 </sheet>
             </form>   
@@ -58,20 +66,26 @@
                         <field name="stock_picking_id"/>
                         <field name="product_id"/>
                         <field name="product_uom"/>
-                        </group>
-                        <group name="qty_info" string="Quantity Info">
-                        <field name="requested_qty"/>
-                        <field name="done_qty"/>
-                        <field name="installed_qty"/>
-                        <field name="diff_qty"/>
-                        <field name="average_cost"/>
                     </group>
+                    <group name="qty_info" string="Quantity Info">
+                        <group>
+                            <field name="requested_qty"/>
+                            <field name="done_qty"/>
+                            <field name="installed_qty"/>
+                            <field name="real_remaining_qty"/>
+                        </group>
+                        <group>
+                            <field name="refund_qty"/>
+                            <field name="diff_qty"/>
+                            <field name="average_cost"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="observation" string="Observation">
+                            <field name="observation"/>
+                        </page>
+                    </notebook>
                 </sheet>
-                <notebook>
-                    <page name="observation" string="Observation">
-                        <field name="observation"/>
-                    </page>
-                </notebook>
             </form>   
         </field>
      </record>
@@ -80,15 +94,15 @@
         <field name="model">tsg.audit.line</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="stock_picking_id" width="15%%"/>
-                <field name="product_id" width="15%%"/>
-                <field name="product_uom" width= "10%%"/>
+                <field name="product_id" width="20%%"/>
                 <field name="requested_qty" width= "10%%"/>
                 <field name="done_qty" width="10%%"/>
                 <field name="installed_qty" width="10%%"/>
                 <field name="diff_qty" width="10%%"/>
+                <field name="real_remaining_qty" width="10%%"/>
+                <field name="refund_qty" width="10%%"/>
+                <field name="product_uom" width= "10%%"/>
                 <field name="average_cost" width="10%%"/>
-                <field name="observation" width="10%%"/>
             </tree>
         </field>
      </record>     
